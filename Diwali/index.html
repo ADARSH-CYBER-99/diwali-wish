@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shubh Deepavali – a Diwali wish for you</title>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#12041f;--ink:#fff2d6;--gold:#ffb627;--rose:#e0245e;--saffron:#ff7a1a;--plum:#2a0b3d;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;color:var(--ink);font-family:'Hind',system-ui,sans-serif;overflow-x:hidden;min-height:100vh;background:var(--bg) radial-gradient(ellipse at 50% 105%,#5a1456 0,#2a0b3d 38%,#12041f 75%) fixed}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+#gate,#main{position:relative;z-index:2}
+#gate{position:fixed;inset:0;display:grid;place-items:center;padding:24px;text-align:center;transition:opacity .9s,visibility .9s}
+#gate.off{opacity:0;visibility:hidden;pointer-events:none}
+h1,h2,h3,h4{font-family:'Yatra One',Georgia,serif;font-weight:400;margin:0}
+#gate h1{font-size:clamp(2.6rem,9vw,5.4rem);color:var(--gold);text-shadow:0 0 30px #ff7a1a99,0 0 70px #e0245e66;line-height:1.05}
+#gate p{margin:14px 0 26px;font-size:1.15rem;opacity:.9}
+#f{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#n{font:inherit;font-size:1.15rem;padding:14px 20px;border-radius:999px;border:1.5px solid var(--gold);background:#12041fcc;color:var(--ink);width:min(300px,100%);text-align:center}
+#n::placeholder{color:#fff2d699}
+.btn{font:600 1rem 'Hind',sans-serif;padding:13px 24px;border-radius:999px;border:1.5px solid var(--gold);background:#ffb62722;color:var(--ink);cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{background:#ffb62744;transform:translateY(-2px)}
+.btn.p{background:var(--gold);color:var(--plum)}
+.btn.p:hover{background:#ffc94d}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.hero{min-height:100svh;padding:11vh 20px 0;text-align:center}
+.hero h2{font-size:clamp(2.2rem,7.5vw,5rem);color:var(--gold);text-shadow:0 0 28px #ff7a1a88;perspective:600px;line-height:1.15}
+.ltr{display:inline-block;opacity:0;transform:translateY(-70px) rotateX(90deg);animation:drop .9s cubic-bezier(.2,.9,.3,1.25) forwards;animation-delay:calc(var(--i)*55ms)}
+@keyframes drop{to{opacity:1;transform:none}}
+.hero .sub{max-width:34ch;margin:16px auto 24px;font-size:1.2rem;line-height:1.5}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hint{margin-top:18px;font-size:.98rem;opacity:.8}
+.sec{max-width:1080px;margin:0 auto;padding:60px 20px 10px;text-align:center}
+.sec h3{font-size:clamp(1.8rem,5vw,2.6rem);color:var(--gold)}
+.sec>p{margin:8px 0 28px;opacity:.85}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;text-align:left}
+.card{perspective:900px;height:265px;cursor:pointer;--rx:0deg;--ry:0deg;--fl:0deg}
+.card.flip{--fl:180deg}
+.in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--fl)));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center}
+.front{background:linear-gradient(160deg,#3d1158ee,#1d0630ee);border:1px solid #ffb62777;box-shadow:0 22px 44px #0009,inset 0 0 44px #ff7a1a22}
+.front h4{font-size:1.5rem;color:var(--gold);margin-bottom:10px}
+.front p{margin:0;font-size:1.1rem;line-height:1.55}
+.front small{margin-top:14px;opacity:.6}
+.back{background:linear-gradient(160deg,#ffc94d,#ff7a1a);color:var(--plum);transform:rotateY(180deg);text-align:center;align-items:center}
+.back p{font-family:'Yatra One',serif;font-size:1.65rem;line-height:1.4;margin:0}
+.diyas{display:flex;gap:clamp(10px,3vw,26px);justify-content:center;align-items:flex-end;margin:10px 0 14px}
+.d{background:none;border:0;cursor:pointer;position:relative;width:64px;height:84px;padding:0}
+.bowl{position:absolute;bottom:0;left:4px;width:56px;height:28px;border-radius:0 0 56px 56px;background:linear-gradient(#b5520f,#ff7a1a);box-shadow:inset 0 5px 0 #6d2d05;transition:box-shadow .5s}
+.fl{position:absolute;left:25px;bottom:26px;width:14px;height:34px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(#fff 10%,#ffd36b 45%,#ff7a1a 100%);transform:scale(0);transform-origin:50% 100%;transition:transform .5s;box-shadow:0 0 22px 8px #ff9a3c99}
+.d.on .fl{transform:scale(1);animation:fk .35s infinite alternate}
+.d.on .bowl{box-shadow:inset 0 5px 0 #6d2d05,0 0 40px 10px #ff7a1a88}
+@keyframes fk{to{transform:scale(1.12,.92) rotate(3deg)}}
+#dm{min-height:1.5em}
+footer{padding:50px 20px 60px;text-align:center;opacity:.8}
+.front .sign,.letter .sign{font-family:'Yatra One',serif;color:var(--gold);opacity:1}.letter{max-width:62ch;margin:0 auto;padding:30px;border:1px solid #ffb62777;border-radius:18px;background:#1d0630dd;line-height:1.7;text-align:left;font-size:1.1rem}.letter h3{margin-bottom:14px}.letter p{margin:0 0 12px}
+@media (prefers-reduced-motion:reduce){.ltr{animation:none;opacity:1;transform:none}.in{transition:none}.d.on .fl{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<section id="gate">
+  <div>
+    <h1>Shubh Deepavali</h1>
+    <p>Enter your name to open Adarsh’s Diwali wishes for you.</p>
+    <form id="f"><input id="n" maxlength="20" placeholder="Your name" autocomplete="given-name" aria-label="Your name"><button class="btn p" type="submit">Light the diyas</button></form>
+  </div>
+</section>
+
+<main id="main" hidden>
+  <section class="hero">
+    <h2 id="g" aria-label="Happy Diwali"></h2>
+    <p class="sub">From Adarsh Pratap Singh : may this festival of lights fill your year with warmth, sweetness and good news.</p>
+    <div class="row">
+      <button class="btn p" id="b1">Launch a rocket</button>
+      <button class="btn" id="b2">Start fireworks show</button>
+      <button class="btn" id="b4">Share this wish</button>
+      <button class="btn" id="b3" aria-pressed="true">Sound: on</button>
+      <button class="btn p" id="b5" aria-pressed="false">Music : off</button>
+      <input type="file" id="fi" accept="audio/*" hidden>
+    </div>
+    <p class="hint">Tap anywhere on the sky to send a rocket there.</p>
+    <p class="hint" id="rm" hidden style="font-family:'Yatra One',serif;font-size:1.4rem;color:var(--gold);opacity:1">श्री राम जय राम जय जय राम</p>
+  </section>
+
+  <section class="sec">
+    <h3>Light your five diyas</h3>
+    <p id="dm">Tap each diya to light it.</p>
+    <div class="diyas" id="dy"></div>
+  </section>
+
+  <section class="sec">
+    <h3>Pataka box</h3><p>Pick a cracker and watch it go off in 3D. Safe, because it only happens on your screen.</p><div class="row" id="pk"></div></section><section class="sec"><h3 id="wt">Wishes for you</h3>
+    <p>Tilt a card with your pointer. Tap it to turn it over.</p>
+    <div class="grid" id="cards"></div>
+  </section>
+
+  <section class="sec"><div class="letter"><h3>A note from Adarsh</h3><p>Diwali is the one night when a whole street glows together. I made this little corner of the internet so my wishes could reach you with a few fireworks attached.</p><p>Light a diya, burn a few crackers safely, eat too many sweets, and call someone you haven’t spoken to in a while. Wishing you and your family a happy, safe and bright Diwali.</p><p class="sign">— Adarsh</p></div></section><footer>Happy Diwali from Adarsh. Stay safe around the crackers.</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s), rnd=(a,b)=>a+Math.random()*(b-a);
+let name='', sound=true, AC, started=false, lit=0;
+
+/* ---------- sound ---------- */
+function au(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume&&AC.resume()}catch(e){}}
+function boom(){
+  if(!sound||!AC)return;
+  const n=AC.sampleRate*.7,b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);
+  for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,3);
+  const s=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();
+  s.buffer=b;f.type='lowpass';f.frequency.value=700;g.gain.value=.55;
+  s.connect(f);f.connect(g);g.connect(AC.destination);s.start();
+}
+function whoosh(){
+  if(!sound||!AC)return;
+  const t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+  o.type='sawtooth';o.frequency.setValueAtTime(180,t);o.frequency.exponentialRampToValueAtTime(1100,t+.8);
+  g.gain.setValueAtTime(.035,t);g.gain.exponentialRampToValueAtTime(.001,t+.9);
+  o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.9);
+}
+
+/* ---------- 3D scene ---------- */
+const R=new THREE.WebGLRenderer({canvas:$('#bg'),antialias:true,alpha:true});
+const S=new THREE.Scene(), C=new THREE.PerspectiveCamera(55,1,.1,300);
+C.position.z=30;
+S.add(new THREE.AmbientLight(0x7a4a8a,.9));
+const dl=new THREE.DirectionalLight(0xffd9a0,.9);dl.position.set(5,10,20);S.add(dl);
+let visH=30,visW=50;
+
+function glowTex(){
+  const c=document.createElement('canvas');c.width=c.height=64;
+  const x=c.getContext('2d'),g=x.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.3,'rgba(255,255,255,.55)');g.addColorStop(1,'rgba(255,255,255,0)');
+  x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);
+}
+const GT=glowTex(), ADD=THREE.AdditiveBlending;
+
+/* stars */
+const sp=new Float32Array(900*3);
+for(let i=0;i<900;i++){sp[i*3]=rnd(-90,90);sp[i*3+1]=rnd(-50,60);sp[i*3+2]=rnd(-80,-5)}
+const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sp,3));
+const stars=new THREE.Points(sg,new THREE.PointsMaterial({size:.9,map:GT,color:0xffe9b0,transparent:true,blending:ADD,depthWrite:false,opacity:.8}));
+S.add(stars);
+
+/* diyas (3D lathe bowls with flickering flames) */
+const prof=[[.01,0],[3,.2],[4.6,1.4],[5,2.6],[4.3,2.9],[3.6,2.1],[.01,1.7]].map(p=>new THREE.Vector2(p[0],p[1]));
+const dGeo=new THREE.LatheGeometry(prof,40);
+const dMat=new THREE.MeshStandardMaterial({color:0xd9731a,metalness:.55,roughness:.35,side:THREE.DoubleSide});
+const diyas=[];
+[.8,1,.8].forEach((sc,i)=>{
+  const h=new THREE.Group(),spin=new THREE.Group();
+  spin.add(new THREE.Mesh(dGeo,dMat));
+  const oil=new THREE.Mesh(new THREE.CircleGeometry(3.7,32),new THREE.MeshBasicMaterial({color:0x4a2004}));
+  oil.rotation.x=-Math.PI/2;oil.position.y=1.85;spin.add(oil);
+  const flame=new THREE.Sprite(new THREE.SpriteMaterial({map:GT,color:0xffb347,blending:ADD,transparent:true,depthWrite:false}));
+  flame.position.y=4;spin.add(flame);
+  const core=new THREE.Sprite(new THREE.SpriteMaterial({map:GT,color:0xffffff,blending:ADD,transparent:true,depthWrite:false}));
+  core.position.y=3.6;core.scale.set(1.4,2,1);spin.add(core);
+  const light=new THREE.PointLight(0xff9a3c,0,70);light.position.y=5;spin.add(light);
+  h.add(spin);h.rotation.x=.5;S.add(h);
+  diyas.push({h,spin,flame,light,k:0,on:false,rel:sc});
+});
+
+function layout(){
+  const base=Math.min(.8,visW/28),sd=Math.min(visW*.3,12);
+  diyas.forEach((d,i)=>{d.h.scale.setScalar(base*d.rel);d.x=(i-1)*sd;d.y=-visH/2+visH*.15});
+}
+function size(){
+  R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(innerWidth,innerHeight,false);
+  C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix();
+  visH=2*Math.tan(C.fov*Math.PI/360)*C.position.z;visW=visH*C.aspect;layout();
+}
+addEventListener('resize',size);size();
+
+/* particle pool for sparks and bursts */
+const N=5000,pp=new Float32Array(N*3),pc=new Float32Array(N*3),pv=new Float32Array(N*3),pb=new Float32Array(N*3),pl=new Float32Array(N),pm=new Float32Array(N);
+for(let i=0;i<N;i++)pp[i*3+1]=-999;
+const pg=new THREE.BufferGeometry();
+pg.setAttribute('position',new THREE.BufferAttribute(pp,3));pg.setAttribute('color',new THREE.BufferAttribute(pc,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({size:1.1,map:GT,vertexColors:true,transparent:true,blending:ADD,depthWrite:false}));
+pts.frustumCulled=false;S.add(pts);
+let pi=0;
+function spark(x,y,z,vx,vy,vz,c,life){
+  const i=pi++%N,k=i*3;
+  pp[k]=x;pp[k+1]=y;pp[k+2]=z;pv[k]=vx;pv[k+1]=vy;pv[k+2]=vz;pb[k]=c.r;pb[k+1]=c.g;pb[k+2]=c.b;pl[i]=pm[i]=life;
+}
+function step(dt){
+  for(let i=0;i<N;i++){
+    if(pl[i]<=0)continue;
+    const k=i*3;pl[i]-=dt;
+    if(pl[i]<=0){pc[k]=pc[k+1]=pc[k+2]=0;pp[k+1]=-999;continue}
+    pv[k+1]-=6*dt;pv[k]*=.985;pv[k+1]*=.985;pv[k+2]*=.985;
+    pp[k]+=pv[k]*dt;pp[k+1]+=pv[k+1]*dt;pp[k+2]+=pv[k+2]*dt;
+    const f=pl[i]/pm[i];pc[k]=pb[k]*f;pc[k+1]=pb[k+1]*f;pc[k+2]=pb[k+2]*f;
+  }
+  pg.attributes.position.needsUpdate=true;pg.attributes.color.needsUpdate=true;
+}
+function burst(x,y){
+  boom();
+  const type=Math.random(),h=Math.random();
+  const c1=new THREE.Color().setHSL(h,1,.6),c2=new THREE.Color().setHSL((h+rnd(.3,.6))%1,1,.62);
+  const n=180,s0=rnd(7,11);
+  for(let i=0;i<n;i++){
+    const a=i/n*Math.PI*2;let vx,vy,vz=rnd(-3,3);
+    if(type<.34){const u=rnd(0,6.283),v=Math.acos(rnd(-1,1)),s=s0*rnd(.6,1);vx=Math.sin(v)*Math.cos(u)*s;vy=Math.sin(v)*Math.sin(u)*s;vz=Math.cos(v)*s}
+    else if(type<.67){vx=Math.cos(a)*s0;vy=Math.sin(a)*s0}
+    else{vx=Math.pow(Math.sin(a),3)*s0;vy=(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))*s0/16}
+    spark(x,y,0,vx,vy,vz,i%2?c1:c2,rnd(1.5,2.4));
+  }
+}
+
+/* rockets (3D meshes that fly up and explode) */
+const rk=[];
+function launch(x,top){
+  top=Math.max(top,-visH/2+6);
+  const g=new THREE.Group();
+  const body=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,2.4,12),new THREE.MeshStandardMaterial({color:0xe23d5a,roughness:.5}));
+  const nose=new THREE.Mesh(new THREE.ConeGeometry(.35,.9,12),new THREE.MeshStandardMaterial({color:0xffc83d}));nose.position.y=1.65;
+  const fin=new THREE.Mesh(new THREE.CylinderGeometry(.36,.36,.5,12),new THREE.MeshStandardMaterial({color:0xffc83d}));fin.position.y=-.9;
+  const stick=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,3,6),new THREE.MeshStandardMaterial({color:0xc9a15b}));stick.position.y=-2.7;
+  const fl=new THREE.Sprite(new THREE.SpriteMaterial({map:GT,color:0xffa733,blending:ADD,transparent:true,depthWrite:false}));fl.scale.set(2.4,2.4,1);fl.position.y=-1.5;
+  g.add(body,nose,fin,stick,fl);
+  g.position.set(x,-visH/2-4,0);
+  S.add(g);rk.push({g,top,vy:4,x,ph:rnd(0,6)});whoosh();
+}
+const orange=new THREE.Color(1,.62,.2);
+function rockets(dt,t){
+  for(let i=rk.length-1;i>=0;i--){
+    const r=rk[i];r.vy=Math.min(r.vy+16*dt,28);
+    r.g.position.y+=r.vy*dt;r.g.position.x=r.x+Math.sin(t*8+r.ph)*.25;r.g.rotation.z=Math.sin(t*8+r.ph)*.08;
+    for(let j=0;j<3;j++)spark(r.g.position.x+rnd(-.2,.2),r.g.position.y-1.8,0,rnd(-1,1),-rnd(2,6),rnd(-1,1),orange,rnd(.4,.8));
+    if(r.g.position.y>=r.top){burst(r.g.position.x,r.g.position.y);S.remove(r.g);rk.splice(i,1)}
+  }
+}
+function show(n){for(let i=0;i<n;i++)setTimeout(()=>launch(rnd(-visW*.42,visW*.42),rnd(-visH*.05,visH*.42)),i*450)}
+
+/* rangoli, lights, lanterns */
+function mkRangoli(){
+  const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');x.translate(256,256);
+  const cols=['#e0245e','#ffb627','#ff7a1a','#fff2d6','#7b2ff7','#1fb5a3'];
+  for(let r=0;r<5;r++){const n=8+r*4,R0=62+r*40;
+    for(let i=0;i<n;i++){x.save();x.rotate(i/n*6.283+r*.2);x.translate(0,-R0);
+      x.fillStyle=cols[(r+i)%6];x.beginPath();x.ellipse(0,0,12+r*2,26-r*2,0,0,6.283);x.fill();
+      x.fillStyle=cols[(r+i+3)%6];x.beginPath();x.arc(0,0,5,0,6.283);x.fill();x.restore();}}
+  for(let i=0;i<72;i++){x.fillStyle=cols[i%6];x.beginPath();x.arc(Math.cos(i/72*6.283)*250,Math.sin(i/72*6.283)*250,4,0,6.283);x.fill();}
+  x.fillStyle='#ffb627';x.beginPath();x.arc(0,0,34,0,6.283);x.fill();x.fillStyle='#e0245e';x.beginPath();x.arc(0,0,18,0,6.283);x.fill();
+  return new THREE.CanvasTexture(c);
+}
+const rg=new THREE.Group(),rgm=new THREE.Mesh(new THREE.CircleGeometry(1,64),new THREE.MeshBasicMaterial({map:mkRangoli(),transparent:true,side:THREE.DoubleSide}));
+rg.rotation.x=-1.0;rg.add(rgm);S.add(rg);
+const bulbs=[],BC=[0xff3d6e,0xffc83d,0xff7a1a,0x5ef0ff,0xb36bff,0x7dff8a];
+for(let s=0;s<2;s++)for(let i=0;i<30;i++){const b=new THREE.Sprite(new THREE.SpriteMaterial({map:GT,color:BC[i%6],blending:ADD,transparent:true,depthWrite:false}));S.add(b);bulbs.push({b,u:i/29,s});}
+const lans=[];
+for(let i=0;i<6;i++){const g=new THREE.Group(),col=[0xff7a1a,0xe0245e,0xffb627][i%3];
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(1.1,.8,1.8,8,1,true),new THREE.MeshBasicMaterial({color:col,side:THREE.DoubleSide,transparent:true,opacity:.85})));
+  const gl=new THREE.Sprite(new THREE.SpriteMaterial({map:GT,color:col,blending:ADD,transparent:true,depthWrite:false}));gl.scale.set(6,6,1);g.add(gl);
+  S.add(g);lans.push({g,x:rnd(-.45,.45),y:rnd(-15,15),sp:rnd(.25,.5),ph:rnd(0,6)});}
+
+/* patakas: anar, chakri, phuljhari, ladi, bomb */
+const em=[],gold=new THREE.Color(1,.8,.3),red=new THREE.Color(1,.25,.2),wh=new THREE.Color(1,.95,.8),D={anar:4.5,chakri:4,phuljhari:6,bomb:1,ladi:2.6};
+let shk=0;
+const PM=(geo,c)=>new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:c,roughness:.5}));
+function mkp(type){const g=new THREE.Group();
+  if(type==='anar'){const m=PM(new THREE.CylinderGeometry(.9,1.2,2.2,16),0xd62839),b=PM(new THREE.CylinderGeometry(1,1.05,.5,16),0xffc83d);b.position.y=.2;g.add(m,b);}
+  if(type==='chakri'){const m=PM(new THREE.TorusGeometry(.9,.3,8,20),0xffb627);m.rotation.x=Math.PI/2;g.add(m);}
+  if(type==='phuljhari'){const m=PM(new THREE.CylinderGeometry(.06,.06,3.2,6),0xb0b0b0);m.position.y=1.6;g.add(m);}
+  if(type==='bomb')g.add(PM(new THREE.SphereGeometry(.9,16,12),0x3a1111));
+  return g;}
+function pataka(type){
+  au();if(type==='rocket')return launch(rnd(-visW*.3,visW*.3),rnd(0,visH*.38));
+  const x=rnd(-visW*.32,visW*.32),y=-visH/2+2,g=mkp(type);
+  g.position.set(x,y+(type==='anar'?1.1:type==='bomb'?.9:0),0);S.add(g);
+  em.push({type,x,y,t:0,d:D[type],a:0,g,n:0,x0:x});
+}
+[['Rocket','rocket'],['Anar (flowerpot)','anar'],['Chakri (spinner)','chakri'],['Phuljhari (sparkler)','phuljhari'],['Ladi (cracker string)','ladi'],['Bomb','bomb']].forEach(([l,k])=>{
+  const b=document.createElement('button');b.className='btn';b.textContent=l;b.addEventListener('click',()=>pataka(k));$('#pk').appendChild(b);});
+function fx(dt,t){
+  const yo=(scrollY/innerHeight)*visH,rs=Math.min(visW*.34,visH*.4);
+  rg.position.set(0,-visH/2+visH*.13+yo,-3);rg.scale.setScalar(rs);rgm.rotation.z+=dt*.15;
+  const bs=Math.min(1,visW/40)*1.3;
+  bulbs.forEach((o,i)=>{const u=o.u;o.b.position.set((u-.5)*visW*1.1,visH/2-.9-o.s*1.1-1.3*Math.abs(Math.sin(u*Math.PI*4+o.s*1.6)),-1);const k=bs*(1+.35*Math.sin(t*3+i*1.7));o.b.scale.set(k,k,1);});
+  lans.forEach(l=>{l.y+=dt*l.sp;if(l.y>visH/2+3){l.y=-visH/2-3;l.x=rnd(-.45,.45)}l.g.position.set(l.x*visW+Math.sin(t*.6+l.ph)*1.2,l.y,-4);l.g.rotation.y+=dt*.5;l.g.scale.setScalar(Math.max(.6,Math.min(1,visW/30)));});
+  for(let i=em.length-1;i>=0;i--){const e=em[i];e.t+=dt;
+    if(e.type==='anar'){for(let j=0;j<8;j++)spark(e.x+rnd(-.3,.3),e.y+2.4,0,rnd(-3,3),rnd(9,18),rnd(-2,2),j%2?gold:red,rnd(.8,1.5));}
+    else if(e.type==='chakri'){e.a+=dt*14;e.g.rotation.y=e.a;for(let j=0;j<3;j++){const a=e.a+j*2.1;spark(e.x,e.y+.4,0,Math.cos(a)*8,rnd(.5,2),Math.sin(a)*8,gold,.6);}}
+    else if(e.type==='phuljhari'){for(let j=0;j<6;j++){const a=rnd(0,6.283),s=rnd(2,7);spark(e.x,e.y+3.2,0,Math.cos(a)*s,Math.sin(a)*s,rnd(-3,3),j%2?wh:gold,.5);}}
+    else if(e.type==='bomb'){spark(e.x,e.y+1.8,0,rnd(-1.5,1.5),rnd(1,4),0,wh,.4);}
+    else if(e.type==='ladi'&&e.t>e.n*.09){e.n++;const bx=e.x0+(e.t/e.d-.5)*visW*.5,by=e.y+rnd(.5,2);
+      for(let j=0;j<16;j++){const a=rnd(0,6.283),s=rnd(3,9);spark(bx,by,0,Math.cos(a)*s,Math.sin(a)*s,rnd(-3,3),j%2?red:gold,.5);}
+      if(e.n%4===0)boom();}
+    if(e.t>=e.d){
+      if(e.type==='bomb'){boom();boom();shk=.8;for(let j=0;j<220;j++){const a=rnd(0,6.283),s=rnd(2,15);spark(e.x,e.y+1,0,Math.cos(a)*s,Math.sin(a)*s,rnd(-6,6),j%3?red:gold,rnd(.5,1.2));}}
+      S.remove(e.g);em.splice(i,1);}
+  }
+  if(shk>0){C.position.x+=rnd(-1,1)*shk;C.position.y+=rnd(-1,1)*shk;shk=Math.max(0,shk-dt*2);}
+}
+
+/* main loop */
+const clk=new THREE.Clock();let mx=0,my=0;
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+function loop(){
+  requestAnimationFrame(loop);
+  const dt=Math.min(clk.getDelta(),.05),t=clk.elapsedTime;
+  C.position.x+=(mx*3-C.position.x)*.03;C.position.y+=(-my*2-C.position.y)*.03;C.lookAt(0,0,0);
+  stars.rotation.y+=dt*.008;
+  const yo=(scrollY/innerHeight)*visH;
+  diyas.forEach((d,i)=>{
+    d.h.position.set(d.x,d.y+yo,0);d.spin.rotation.y+=dt*.4;
+    d.k+=((d.on?1:0)-d.k)*.05;
+    const f=d.k*(1+.12*Math.sin(t*9+i)+.08*Math.sin(t*23+i*2));
+    d.flame.scale.set(3.4*f,4.6*f,1);d.light.intensity=d.k*(1.8+.4*Math.sin(t*11+i));
+  });
+  rockets(dt,t);fx(dt,t);step(dt);R.render(S,C);
+}
+loop();
+
+/* ---------- page logic ---------- */
+function greet(){
+  const h=$('#g');h.textContent='';
+  [...('Happy Diwali, '+name)].forEach((ch,i)=>{
+    const s=document.createElement('span');s.className='ltr';s.style.setProperty('--i',i);
+    s.textContent=ch===' '?'\u00A0':ch;h.appendChild(s);
+  });
+  h.setAttribute('aria-label','Happy Diwali, '+name);
+}
+const wishes=[
+  ['Light',n=>n+', may every corner of your home glow with warmth and light this Diwali.','दीपावली की हार्दिक शुभकामनाएँ'],
+  ['Prosperity',()=>'May Lakshmi bless you with health, wealth and steady good fortune.','लक्ष्मी माँ की कृपा बनी रहे'],
+  ['Joy',()=>'Sweets on every plate, laughter in every room, and no one left out.','खुशियाँ आपके द्वार आएँ'],
+  ['Family',()=>'Wishing you an evening with the people who matter most to you.','परिवार संग मनाएँ दिवाली'],
+  ['Courage',()=>'Let one small diya remind you that light always wins over dark.','अंधकार पर प्रकाश की जीत'],
+  ['New beginnings',()=>'May the new year bring you new goals and the time to chase them.','नया साल, नई शुरुआत']
+];
+wishes.push(
+  ['Friendship',()=>'Thank you for being someone I can count on. Let’s make this Diwali loud, bright and full of laughter.','दोस्ती का दीप जलता रहे'],
+  ['Health',()=>'Eat well, sleep well, stay healthy. Everything else gets easier after that.','स्वस्थ रहें, मस्त रहें'],
+  ['Peace',()=>'May old arguments go out like a spent sparkler and only kind memories stay.','मन में शांति बनी रहे'],
+  ['Success',()=>'May your hard work finally get the results it deserves this year.','मेहनत का फल मीठा हो'],
+  ['Safety',()=>'Enjoy the crackers, but keep a safe distance and think of pets, kids and elders.','सुरक्षित दिवाली मनाएँ'],
+  ['Gratitude',n=>n+', you make my festival brighter just by being part of it.','धन्यवाद']
+);
+function cards(){
+  const box=$('#cards');box.textContent='';
+  wishes.forEach(([t,f,hi])=>{
+    const c=document.createElement('div');c.className='card';c.tabIndex=0;c.setAttribute('role','button');
+    const inn=document.createElement('div');inn.className='in';
+    const a=document.createElement('div');a.className='fc front';
+    const h=document.createElement('h4');h.textContent=t;
+    const p=document.createElement('p');p.textContent=f(name);
+    const sn=document.createElement('small');sn.className='sign';sn.textContent='— Adarsh';a.append(h,p,sn);
+    const b=document.createElement('div');b.className='fc back';
+    const q=document.createElement('p');q.textContent=hi;b.appendChild(q);
+    inn.append(a,b);c.appendChild(inn);box.appendChild(c);
+    c.addEventListener('pointermove',e=>{
+      const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      c.style.setProperty('--ry',(x*16)+'deg');c.style.setProperty('--rx',(-y*16)+'deg');
+    });
+    c.addEventListener('pointerleave',()=>{c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg')});
+    const flip=()=>c.classList.toggle('flip');
+    c.addEventListener('click',flip);
+    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+  });
+  $('#wt').textContent='Wishes for you, '+name;
+}
+function diyaRow(){
+  const row=$('#dy');row.textContent='';
+  for(let i=0;i<5;i++){
+    const b=document.createElement('button');b.className='d';b.setAttribute('aria-label','Light diya '+(i+1));
+    b.innerHTML='<span class="fl"></span><span class="bowl"></span>';
+    b.addEventListener('click',()=>{
+      if(b.classList.contains('on'))return;
+      b.classList.add('on');lit++;au();whoosh();
+      $('#dm').textContent=lit<5?lit+' of 5 diyas lit.':'All five diyas are lit. Enjoy the show, '+name+'!';
+      if(lit===5)show(10);
+    });
+    row.appendChild(b);
+  }
+}
+function start(){
+  started=true;$('#gate').classList.add('off');$('#main').hidden=false;
+  greet();cards();diyaRow();scrollTo(0,0);
+  diyas.forEach((d,i)=>setTimeout(()=>d.on=true,400+i*500));
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setTimeout(()=>show(5),900);
+}
+$('#f').addEventListener('submit',e=>{
+  e.preventDefault();name=($('#n').value.trim()||'Friend').slice(0,20);au();start();
+});
+$('#b1').addEventListener('click',()=>{au();launch(rnd(-visW*.3,visW*.3),rnd(0,visH*.38))});
+$('#b2').addEventListener('click',()=>{au();show(10)});
+$('#b3').addEventListener('click',e=>{
+  sound=!sound;e.currentTarget.textContent='Sound: '+(sound?'on':'off');e.currentTarget.setAttribute('aria-pressed',sound);
+});
+$('#b4').addEventListener('click',()=>{
+  const text='Happy Diwali from '+name+'! Open this for a surprise.',url=location.href;
+  if(navigator.share)navigator.share({title:'Happy Diwali',text,url}).catch(()=>{});
+  else window.open('https://wa.me/?text='+encodeURIComponent(text+' '+url),'_blank');
+});
+/* Ram ji music: original synthesized bhajan-style loop (drone, bell, tabla-like beat, chant melody) */
+let mus=null,own=null,ramOn=false;
+own=new Audio('ram-aayenge.mp3');own.loop=true;
+own.addEventListener('error',()=>{own=null;if(ramOn&&!mus)musicStart()});
+const SC=[261.6,293.7,329.6,392,440,523.3,587.3,659.3];
+const WD=['राम','सिया','राम','सिया','राम','जय','जय','राम'];
+function hl(n){const r=$('#rm');r.textContent='';WD.forEach((w,i)=>{const s=document.createElement('span');s.textContent=w+' ';s.style.opacity=i===n?1:.35;s.style.fontSize=i===n?'1.3em':'1em';r.appendChild(s)})}
+const PHR=[[[3,1],[4,1],[3,2],[4,1],[3,1],[2,1],[2,1],[0,3]],[[3,1],[4,1],[5,2],[4,1],[3,1],[2,1],[1,1],[0,3]]];
+function musicStart(){
+  au();if(!AC)return;
+  const m=AC.createGain();m.gain.value=.0001;m.connect(AC.destination);m.gain.exponentialRampToValueAtTime(.35,AC.currentTime+2);
+  const lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=500;lp.connect(m);
+  const dr=[130.8,196,261.6].map((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;o.detune.value=i*4;g.gain.value=.12;o.connect(g);g.connect(lp);o.start();return o});
+  const note=(f,t,d,v)=>{const o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(m);o.start(t);o.stop(t+d+.05)};
+  const thump=t=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(55,t+.2);g.gain.setValueAtTime(.45,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(m);o.start(t);o.stop(t+.3)};
+  const bell=t=>[1568,2350].forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.setValueAtTime(.07/(i+1),t);g.gain.exponentialRampToValueAtTime(.0001,t+1.6);o.connect(g);g.connect(m);o.start(t);o.stop(t+1.7)});
+  let pi=0,stop=false,tm;
+  function ph(){
+    if(stop)return;
+    const t0=AC.currentTime+.05,b=60/84,P=PHR[pi++%2];let t=t0;
+    P.forEach(([i,bt],n)=>{note(SC[i],t,bt*b*.95,.35);note(SC[i]*2,t,bt*b*.6,.06);setTimeout(()=>hl(n),Math.max(0,(t-AC.currentTime)*1000));t+=bt*b});
+    const len=t-t0;for(let k=0;k<Math.round(len/b);k++)thump(t0+k*b);
+    bell(t0);tm=setTimeout(ph,len*1000-50);
+  }
+  ph();
+  mus={stop(){stop=true;clearTimeout(tm);m.gain.cancelScheduledValues(AC.currentTime);m.gain.setTargetAtTime(0,AC.currentTime,.3);dr.forEach(o=>o.stop(AC.currentTime+1.5))}};
+}
+function ramSet(on){
+  ramOn=on;const b=$('#b5');b.textContent='Ram ji music: '+(on?'on':'off');b.setAttribute('aria-pressed',on);
+  $('#rm').hidden=!on||!!own;
+  if(!on){if(mus){mus.stop();mus=null}if(own)own.pause()}
+  else if(own)own.play().catch(()=>{});else musicStart();
+}
+$('#b5').addEventListener('click',()=>ramSet(!ramOn));
+document.addEventListener('pointerdown',e=>{
+  if(!started||e.target.closest('button,input,.card,a'))return;
+  au();launch((e.clientX/innerWidth-.5)*visW,(.5-e.clientY/innerHeight)*visH);
+});
+</script>
+</body>
+</html>
